@@ -1,3 +1,6 @@
+#pip install js2py
+import js2py
+
 letter = {
   "진짜" : "인터넷에",
   "파이썬" : "이",
@@ -6,11 +9,12 @@ letter = {
   "나도" : "파이써니스타?"
 }
 
+i_am_javascript = """
+
 function textLetter(obj) {
   let result_map = Object.keys(obj).map(function (key) {
     return [key, obj[key]];
   });
-  // console.log(result_map);
 
   let stringAdd = [];
   let stringAddTwo = [];
@@ -23,9 +27,11 @@ function textLetter(obj) {
   let flattened = stringAddTwo.reduce(function(acc, items) {
     return acc.concat(items);
   }, []);
-  // console.log(flattened);
   let stringResult = flattened.join(' ');
   console.log(stringResult);
 }
+"""
 
-textLetter(letter);
+internet_warrior = js2py.eval_js(i_am_javascript)
+
+print(internet_warrior(letter))
